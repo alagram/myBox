@@ -1,6 +1,6 @@
 <div class="row">
   <h1>Update your settings</h1>
-  <form name="form">
+  <form name="form" ng-submit="updateSettings()">
     <fieldset>
       <legend>Update settings</legend>
 
@@ -39,7 +39,7 @@
 
       <div class="row">
         <div class="push-9 small-3">
-          <button type="submit" class="button">Update</button>
+          <button type="submit" class="button" ng-disabled="form.$dirty && form.$invalid">Update</button>
         </div>
       </div>
 

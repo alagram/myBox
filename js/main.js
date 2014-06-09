@@ -17,5 +17,12 @@ app.controller('HomeController', function($scope) {
 });
 
 app.controller('SettingsController', function($scope) {
-  $scope.name = "Albert";
+  $scope.settings = {
+    name: "Albert",
+    email: "me@example.com"
+  }
+
+  $scope.updateSettings = function() {
+    console.log("updateSettings was called");
+  }
 });
