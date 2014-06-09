@@ -26,3 +26,22 @@ app.controller('SettingsController', function($scope) {
     console.log("updateSettings was called");
   }
 });
+
+app.controller('MailListingController', ['$scope', '$http', function($scope, $http) {
+  $scope.email = [];
+
+  $http({
+    method: 'GET',
+    url: '/api/mail'
+  })
+  .success(function(data, status, headers) {
+    $scope.email = data.all;
+  })
+  .error(function(data, status, headers) {
+
+  });
+}]);
+
+app.controller('ContentController', function($scope) {
+
+});
