@@ -13,7 +13,17 @@ app.config(function($routeProvider) {
 });
 
 app.controller('HomeController', function($scope) {
+  $scope.selectedMail;
 
+  $scope.setSelectedMail = function(mail) {
+    $scope.selectedMail = mail;
+  };
+
+  $scope.isSelected = function(mail) {
+    if ($scope.selectedMail) {
+      return $scope.selectedMail === mail;
+    }
+  };
 });
 
 app.controller('SettingsController', function($scope) {
