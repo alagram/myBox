@@ -24,7 +24,7 @@
         </div>
 
         <div class="small-11 columns">
-          <input ng-model="reply.to" type="email" placeholer="email">
+          <input ng-model="reply.to" type="email" placeholer="">
         </div>
 
         <div class="small-12 columns">
@@ -33,7 +33,7 @@
       </div>
 
       <button class="button radius" ng-click="sendReply()">Send</button>
-      <button class="button radius alert" ng-click="cancelReply()">Cancel</button>
+      <button class="button radius alert" ng-click="toggleReplyForm()">Cancel</button>
     </form>
 
     <div class="row header">
@@ -44,7 +44,7 @@
     <div class="row actions">
       <div class="small-8 columns">{{ selectedMail.from.join(", ") }} to {{ selectedMail.to }}</div>
 
-      <a ng-click="showReply()" class="button radio push-1">Reply</a>
+      <a ng-click="toggleReplyForm()" class="button radio push-1">Reply</a>
     </div>
 
     <div class="small-12 columns" ng-bind-html-unsafe="selectedMail.body"></div>
