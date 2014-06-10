@@ -16,19 +16,37 @@
   </div>
 
   <div ng-show="selectedMail">
+
+    <form id="replyForm" ng-submit="sendEmailReply()" ng-show="showingReply">
+      <div class="row collapse">
+        <div class="small-1 columns">
+          <span class="prefix">To</span>
+        </div>
+
+        <div class="small-11 columns">
+          <input ng-model="reply.to" type="email" placeholer="email">
+        </div>
+
+        <div class="small-12 columns">
+          <textarea ng-model="reply.body">{{ reply.body }}</textarea>
+        </div>
+      </div>
+
+      <button class="button radius" ng-click="sendReply()">Send</button>
+      <button class="button radius alert" ng-click="cancelReply()">Cancel</button>
+    </form>
+
     <div class="row header">
       <div class="small-6 columns">{{ selectedMail.subject }}</div>
-      <div class="small-6 columns">{{ selectedMail.sent_at }}</div>
+      <div class="small-6 columns">{{ selectedMail.sent_at | date: 'MM/dd/yy' }}</div>
     </div>
 
     <div class="row actions">
-      <div class="small-8 columns">{{ selectedMail.from }} to {{ selectedMail.to }}</div>
+      <div class="small-8 columns">{{ selectedMail.from.join(", ") }} to {{ selectedMail.to }}</div>
 
       <a ng-click="showReply()" class="button radio push-1">Reply</a>
     </div>
 
-    <div class="small-12 columns">
-      {{ selectedMail.body }}
-    </div>
+    <div class="small-12 columns" ng-bind-html-unsafe="selectedMail.body"></div>
   </div>
 </div>

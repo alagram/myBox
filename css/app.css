@@ -17,6 +17,7 @@ input.ng-invalid-minlength.ng-dirty { border: 1px solid blue; }
   margin-top: 20px;
   overflow-y: scroll;
   overflow-x: hidden;
+  height: 400px;
 }
 .emailListing {
   border-radius: 3px;

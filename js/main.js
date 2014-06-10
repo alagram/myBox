@@ -52,6 +52,10 @@ app.controller('MailListingController', ['$scope', '$http', function($scope, $ht
   });
 }]);
 
-app.controller('ContentController', function($scope) {
+app.controller('ContentController', ['$scope', function($scope) {
+  $scope.showingReply = false;
 
-});
+  $scope.showReply = function() {
+    $scope.showingReply = true;
+  };
+}]);
