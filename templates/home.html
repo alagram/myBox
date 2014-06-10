@@ -1,7 +1,7 @@
 <div class="small-4 columns" ng-controller="MailListingController">
   <h2>Sidebar</h2>
   <ul id="emailListing">
-    <li ng-repeat="mail in email" ng-click="setSelectedMail(mail)">
+    <li ng-repeat="mail in (email | orderBy:'sent_at':true | limitTo:4)" ng-click="setSelectedMail(mail)">
       <div class="container emailListing" ng-class="{selected: isSelected(mail)}">
         <div class="small-8 columns">{{ mail.from }}</div>
         <div class="small-12 columns">{{ mail.subject }}</div>
