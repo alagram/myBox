@@ -1,11 +1,7 @@
 <div class="small-4 columns" ng-controller="MailListingController">
-  <input type="number" placeholder="Filter message by years" ng-model="nYearsAgo" />
+  <input type="search" placeholder="Filter message" ng-model="search.$" />
   <ul id="emailListing">
-    <li ng-repeat="mail in (email | orderBy:'sent_at':true | filter:searchPastNYears)" ng-click="setSelectedMail(mail)">
-      <div class="container emailListing" ng-class="{selected: isSelected(mail)}">
-        <div class="small-8 columns">{{ mail.from }}</div>
-        <div class="small-12 columns">{{ mail.subject }}</div>
-      </div>
+    <li email-listing email='mail' gravatar-size="20" action='setSelectedMail(selectedMail)' ng-repeat="mail in (email | orderBy:'sent_at':true | filter:search)">
     </li>
   </ul>
 </div>
