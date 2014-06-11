@@ -67,6 +67,7 @@ app.controller('SettingsController', function($scope) {
 
 app.controller('MailListingController', ['$scope', 'mailService', function($scope, mailService) {
   $scope.email = [];
+  $scope.nYearsAgo = 10;
 
   mailService.getMail()
   .success(function(data, status, headers) {
@@ -75,6 +76,14 @@ app.controller('MailListingController', ['$scope', 'mailService', function($scop
   .error(function(data, status, headers) {
 
   });
+
+  $scope.searchPastNYears = function(email) {
+    var emailSentAtDate = new Date(email.sent_at),
+        nYearsAgoDate = new Date();
+
+    nYearsAgoDate.setFullYear(nYearsAgoDate.getFullYear() - $scope.nYearsAgo);
+    return emailSentAtDate > nYearsAgoDate;
+  };
 }]);
 
 app.controller('ContentController', ['$scope', '$rootScope', 'mailService', function($scope, $rootScope, mailService) {
